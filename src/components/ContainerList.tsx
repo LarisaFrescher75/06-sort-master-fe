@@ -136,8 +136,8 @@ const ContainerList = () => {
               ))}
             </ul>
 
-            {/* Добавление нового предмета */}
-            <div className="mt-4">
+            {/* Добавление нового предмета для контейнера */}
+            <div className="mt-4 p-3 rounded border-2 border-yellow-300 bg-yellow-50">
               <input
                 type="text"
                 placeholder="New item name"
