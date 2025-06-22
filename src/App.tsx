@@ -4,6 +4,8 @@ import About from "./pages/About";
 import Layout from "./layouts/Layout";
 import Containers from "./pages/Containers";
 import CreateContainerForm from "./components/CreateContainerForm";
+import Items from "./pages/Items";
+import CreateItemForm from "./components/CreateItemForm";
 
 function App() {
   return (
@@ -14,7 +16,9 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/containers" element={<Containers />} />
+          <Route path="/items" element={<Items />} />
           <Route path="/container-form" element={<CreateContainerForm />} />
+          <Route path="/item-form" element={<CreateItemForm />} />
         </Routes>
       </Layout>
     </div>
