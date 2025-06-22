@@ -139,7 +139,10 @@ const CreateItemForm = () => {
         {/* Submit Button */}
         <button
           type="submit"
-          className="w-full inline-flex items-center justify-center rounded-md bg-black px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
+          className="w-full inline-flex items-center justify-center 
+          rounded-md bg-black px-4 py-2 text-sm 
+          font-medium text-white transition-colors hover:bg-zinc-800
+           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
         >
           Create Item
         </button>
