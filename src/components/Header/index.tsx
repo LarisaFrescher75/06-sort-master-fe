@@ -35,6 +35,9 @@ export default function Header() {
           >
             Add container
           </Link>
+          <Link to="/items" className="text-#00000de0-500 hover:underline">
+        All Items
+      </Link>
         </nav>
       </div>
     </header>
