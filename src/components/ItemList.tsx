@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
+import ItemCard from "../pages/ItemCard";
+
 
 interface Item {
   id: number;
   name: string;
   containerId: number;
 }
+
 
 const ItemList = () => {
   const [items, setItems] = useState<Item[]>([]);
@@ -33,10 +36,12 @@ const ItemList = () => {
             className="p-4 rounded-lg shadow-md text-white"
             style={{ backgroundColor: "#4A90E2" }} 
           >
-            <h3 className="text-xl font-semibold">{item.name}</h3>
+            <ItemCard item={item} />
+           {/* <h3 className="text-xl font-semibold">{item.name}</h3>
             <p>Container ID: {item.containerId}</p>
-            <p>ID: {item.id}</p>
+            <p>ID: {item.id}</p>*/}
           </li>
+           
         ))}
       </ul>
     </div>

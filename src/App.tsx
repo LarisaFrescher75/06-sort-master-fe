@@ -6,6 +6,9 @@ import Containers from "./pages/Containers";
 import CreateContainerForm from "./components/CreateContainerForm";
 import Items from "./pages/Items";
 import CreateItemForm from "./components/CreateItemForm";
+import ItemCard from "./pages/ItemCard";
+
+
 
 function App() {
   return (
@@ -14,9 +17,14 @@ function App() {
       <Layout>
         <Routes>
           <Route index element={<Home />} />
+          <Route path="/item" element={<ItemCard item={{
+            id: 0,
+            name: "",
+            containerId: 0
+          }} />} />
           <Route path="/about" element={<About />} />
           <Route path="/containers" element={<Containers />} />
-          <Route path="/items" element={<Items />} />
+          <Route path="/items" element={<Items />} />         
           <Route path="/container-form" element={<CreateContainerForm />} />
           <Route path="/item-form" element={<CreateItemForm />} />
         </Routes>
