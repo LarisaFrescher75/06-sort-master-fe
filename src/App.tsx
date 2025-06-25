@@ -7,6 +7,8 @@ import CreateContainerForm from "./components/CreateContainerForm";
 import Items from "./pages/Items";
 import CreateItemForm from "./components/CreateItemForm";
 import ItemCard from "./pages/ItemCard";
+import ItemDetails from "./components/ItemDetails";
+
 
 
 
@@ -22,7 +24,10 @@ function App() {
             name: "",
             containerId: 0
           }} />} />
+          <Route path="/item/:itemId" element={<ItemDetails />} />
+
           <Route path="/about" element={<About />} />
+          
           <Route path="/containers" element={<Containers />} />
           <Route path="/items" element={<Items />} />         
           <Route path="/container-form" element={<CreateContainerForm />} />

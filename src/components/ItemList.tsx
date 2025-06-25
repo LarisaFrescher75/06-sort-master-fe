@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ItemCard from "../pages/ItemCard";
+import { Link } from "react-router-dom";
 
 
 interface Item {
@@ -36,6 +37,10 @@ const ItemList = () => {
             className="p-4 rounded-lg shadow-md text-white"
             style={{ backgroundColor: "#4A90E2" }} 
           >
+            <Link to={`/item/${item.id}`}>
+            <h3 className="text-xl font-semibold">{item.name}</h3>
+            
+            </Link>
             <ItemCard item={item} />
            {/* <h3 className="text-xl font-semibold">{item.name}</h3>
             <p>Container ID: {item.containerId}</p>
