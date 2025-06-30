@@ -8,6 +8,9 @@ import Items from "./pages/Items";
 import CreateItemForm from "./components/CreateItemForm";
 import ItemCard from "./pages/ItemCard";
 import ItemDetails from "./components/ItemDetails";
+import CreateAdsForm from "./components/Header/CreateAdsForm";
+import AdsPage from "./components/AdsPage";
+
 
 
 
@@ -32,6 +35,8 @@ function App() {
           <Route path="/items" element={<Items />} />         
           <Route path="/container-form" element={<CreateContainerForm />} />
           <Route path="/item-form" element={<CreateItemForm />} />
+          <Route path="/ads" element={<AdsPage />} />
+          <Route path="/ads-create" element={<CreateAdsForm />} />
         </Routes>
       </Layout>
     </div>

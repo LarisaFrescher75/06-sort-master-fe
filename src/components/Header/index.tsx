@@ -38,6 +38,14 @@ export default function Header() {
           <Link to="/items" className="text-#00000de0-500 hover:underline">
         All Items
       </Link>
+
+       <Link
+            to="/adverts" 
+            className="text-sm font-medium text-gray-600 hover:text-black transition-colors"
+          >
+            Advertisements
+          </Link>
+          
         </nav>
       </div>
     </header>
