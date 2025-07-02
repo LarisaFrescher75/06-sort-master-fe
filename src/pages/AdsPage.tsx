@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import CreateAdsForm from '../components/Header/CreateAdsForm';
 import AdvertList from '../components/AdvertList';
@@ -10,9 +9,7 @@ interface Advert {
   photo: string;
 }
 
-
-
-export default function AdsPage() {
+const AdsPage: React.FC = () => {
   const [adverts, setAdverts] = useState<Advert[]>([]);
 
   useEffect(() => {
@@ -39,4 +36,6 @@ export default function AdsPage() {
       <AdvertList adverts={adverts} onDelete={handleDelete} />
     </div>
   );
-}
+};
+
+export default AdsPage;

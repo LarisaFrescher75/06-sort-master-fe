@@ -19,6 +19,9 @@ const ContainerList = () => {
   const [error, setError] = useState<Error | null>(null);
   const [message, setMessage] = useState<string | null>(null);
 
+  
+  const [searchColor, setSearchColor] = useState<string>("");
+
   useEffect(() => {
     fetch("/api/containers")
       .then((res) => {
@@ -34,13 +37,9 @@ const ContainerList = () => {
       const res = await fetch(`/api/containers/${id}`, {
         method: "DELETE",
       });
-
       if (!res.ok) throw new Error("Failed to delete container");
-
       setContainers((prev) => prev.filter((container) => container.id !== id));
       setMessage("Container successfully removed.");
-
-      
       setItemsByContainer((prev) => {
         const updated = { ...prev };
         delete updated[id];
@@ -62,24 +61,18 @@ const ContainerList = () => {
   const handleAddItem = async (containerId: string) => {
     const itemName = newItems[containerId]?.trim();
     if (!itemName) return;
-
     try {
       const res = await fetch(`/api/items`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: itemName, containerId: containerId }),
       });
-
       if (!res.ok) throw new Error("Failed to add item");
-
       const newItem: Item = await res.json();
-
-      
       setItemsByContainer((prev) => ({
         ...prev,
         [containerId]: [...(prev[containerId] || []), newItem],
       }));
-
       setNewItems((prev) => ({ ...prev, [containerId]: "" }));
       setMessage(`Item "${itemName}" added.`);
     } catch (err) {
@@ -90,6 +83,11 @@ const ContainerList = () => {
     }
   };
 
+  
+  const filteredContainers = containers.filter((container) =>
+    searchColor ? container.color.toLowerCase().includes(searchColor.toLowerCase()) : true
+  );
+
   if (error) {
     return <div className="text-red-500">Error loading containers.</div>;
   }
@@ -97,6 +95,17 @@ const ContainerList = () => {
   return (
     <div className="p-6">
       <h2 className="text-2xl font-bold mb-4">Rubbish Containers</h2>
+
+      
+      <div className="mb-4">
+        <input
+          type="text"
+          placeholder="Search by color"
+          value={searchColor}
+          onChange={(e) => setSearchColor(e.target.value)}
+          className="px-3 py-2 border rounded"
+        />
+      </div>
 
       {message && (
         <div
@@ -111,7 +120,7 @@ const ContainerList = () => {
       )}
 
       <ul className="space-y-4">
-        {containers.map((container) => (
+        {filteredContainers.map((container) => (
           <li
             key={container.id}
             className="p-4 rounded-lg shadow-md text-white relative"
@@ -127,7 +136,7 @@ const ContainerList = () => {
             <h3 className="text-xl font-semibold">{container.name}</h3>
             <p>{container.description}</p>
 
-            {/* Список предметов */}
+            
             <ul className="mt-2 ml-4 list-disc">
               {(itemsByContainer[container.id] || []).map((item) => (
                 <li key={item.id} className="text-white text-sm">
@@ -136,7 +145,7 @@ const ContainerList = () => {
               ))}
             </ul>
 
-            {/* Добавление нового предмета для контейнера */}
+            {/* Добавление нового предмета */}
             <div className="mt-4 p-3 rounded border-2 border-yellow-300 bg-yellow-50">
               <input
                 type="text"
